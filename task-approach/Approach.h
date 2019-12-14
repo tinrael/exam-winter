@@ -27,5 +27,7 @@ class ApproachTypeA : public Approach {
 public:
 	ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving);
 	virtual ~ApproachTypeA();
+
+	bool solve(const Task& task) override;
 };
 
