@@ -40,7 +40,7 @@ bool ApproachTypeA::solve(const Task& task)
 		std::uniform_real_distribution<> dis(0.0, 1.0);
 
 		// Each call to dis(gen) generates a new random double in [0, 1)
-		if (dis(gen) <= successProbability) {
+		if (dis(gen) < successProbability) {
 			return true;
 		}
 	}
