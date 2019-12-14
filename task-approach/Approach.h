@@ -11,10 +11,10 @@ protected:
 	string taskType;
 	double successProbability;
 	bool isReused;
-	unsigned timeSolving; // the time needed to solve the task
+	int timeSolving; // the time needed to solve the task
 
 public:
-	Approach(string taskType, double successProbability, bool isReused, unsigned timeSolving);
+	Approach(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~Approach() = 0;
 
 	bool virtual solve(const Task &task);
@@ -25,6 +25,6 @@ public:
 // fixed time and success probability
 class ApproachTypeA : public Approach {
 public:
-	ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving);
+	ApproachTypeA(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeA();
 };

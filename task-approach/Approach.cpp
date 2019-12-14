@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <random>
 
-Approach::Approach(string taskType, double successProbability, bool isReused, unsigned timeSolving) :
+Approach::Approach(string taskType, double successProbability, bool isReused, int timeSolving) :
 	taskType(taskType), isReused(isReused), timeSolving(timeSolving)
 {
 	if (successProbability >= 0.0 && successProbability <= 1.0) {
@@ -38,7 +38,7 @@ string Approach::getTaskType()
 	return taskType;
 }
 
-ApproachTypeA::ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving) :
+ApproachTypeA::ApproachTypeA(string taskType, double successProbability, bool isReused, int timeSolving) :
 	Approach(taskType, successProbability, isReused, timeSolving)
 {
 }
