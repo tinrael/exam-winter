@@ -14,7 +14,7 @@ public:
 	Task(const string &type, unsigned size);
 	virtual ~Task();
 	
-	string getType();
-	unsigned getSize();
+	string getType() const;
+	unsigned getSize() const;
 };
 

@@ -8,12 +8,12 @@ Task::~Task()
 {
 }
 
-string Task::getType()
+string Task::getType() const
 {
 	return type;
 }
 
-unsigned Task::getSize()
+unsigned Task::getSize() const
 {
 	return size;
 }
