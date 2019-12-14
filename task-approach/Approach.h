@@ -17,7 +17,7 @@ public:
 	Approach(string taskType, double successProbability, bool isReused, unsigned timeSolving);
 	virtual ~Approach() = 0;
 
-	bool virtual solve(const Task &task) = 0;
+	bool virtual solve(const Task &task);
 
 	string getTaskType();
 };
@@ -27,7 +27,4 @@ class ApproachTypeA : public Approach {
 public:
 	ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving);
 	virtual ~ApproachTypeA();
-
-	bool solve(const Task& task) override;
 };
-

@@ -17,22 +17,8 @@ Approach::~Approach()
 {
 }
 
-string Approach::getTaskType()
-{
-	return taskType;
-}
-
-ApproachTypeA::ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving) :
-	Approach(taskType, successProbability, isReused, timeSolving)
-{
-}
-
-ApproachTypeA::~ApproachTypeA()
-{
-}
-
 // Solve the task with a certain probability (successProbability)
-bool ApproachTypeA::solve(const Task &task)
+bool Approach::solve(const Task& task)
 {
 	if (task.getType() == this->taskType) {
 		std::random_device rd;
@@ -45,4 +31,18 @@ bool ApproachTypeA::solve(const Task &task)
 		}
 	}
 	return false;
+}
+
+string Approach::getTaskType()
+{
+	return taskType;
+}
+
+ApproachTypeA::ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving) :
+	Approach(taskType, successProbability, isReused, timeSolving)
+{
+}
+
+ApproachTypeA::~ApproachTypeA()
+{
 }
