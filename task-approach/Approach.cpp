@@ -32,7 +32,7 @@ ApproachTypeA::~ApproachTypeA()
 }
 
 // Solve the task with a certain probability (successProbability)
-bool ApproachTypeA::solve(const Task& task)
+bool ApproachTypeA::solve(const Task &task)
 {
 	if (task.getType() == this->taskType) {
 		std::random_device rd;

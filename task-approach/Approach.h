@@ -7,7 +7,7 @@ using std::string;
 
 class Approach
 {
-public:
+protected:
 	string taskType;
 	double successProbability;
 	bool isReused;
