@@ -4,7 +4,7 @@
 Approach::Approach(string taskType, double successProbability, bool isReused, unsigned timeSolving) :
 	taskType(taskType), isReused(isReused), timeSolving(timeSolving)
 {
-	if (successProbability >= 0 && successProbability <= 1) {
+	if (successProbability >= 0.0 && successProbability <= 1.0) {
 		this->successProbability = successProbability;
 	}
 	else {
@@ -21,7 +21,7 @@ string Approach::getTaskType()
 	return taskType;
 }
 
-ApproachTypeA::ApproachTypeA(string taskType, unsigned successProbability, bool isReused, unsigned timeSolving) :
+ApproachTypeA::ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving) :
 	Approach(taskType, successProbability, isReused, timeSolving)
 {
 }

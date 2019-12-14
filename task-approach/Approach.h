@@ -7,7 +7,7 @@ using std::string;
 
 class Approach
 {
-protected:
+public:
 	string taskType;
 	double successProbability;
 	bool isReused;
@@ -25,7 +25,7 @@ public:
 // fixed time and success probability
 class ApproachTypeA : public Approach {
 public:
-	ApproachTypeA(string taskType, unsigned successProbability, bool isReused, unsigned timeSolving);
+	ApproachTypeA(string taskType, double successProbability, bool isReused, unsigned timeSolving);
 	virtual ~ApproachTypeA();
 };
 
