@@ -15,3 +15,8 @@ Approach::Approach(string taskType, unsigned successProbability, bool isReused, 
 Approach::~Approach()
 {
 }
+
+ApproachTypeA::ApproachTypeA(string taskType, unsigned successProbability, bool isReused, unsigned timeSolving) :
+	Approach(taskType, successProbability, isReused, timeSolving)
+{
+}

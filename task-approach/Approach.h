@@ -20,3 +20,10 @@ public:
 	bool virtual solve(const Task &task) = 0;
 };
 
+// fixed time and success probability
+class ApproachTypeA : public Approach {
+public:
+	ApproachTypeA(string taskType, unsigned successProbability, bool isReused, unsigned timeSolving);
+	virtual ~ApproachTypeA();
+};
+
