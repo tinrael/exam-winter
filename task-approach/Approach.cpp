@@ -107,3 +107,39 @@ bool ApproachTypeB::solve(const Task& task)
 	
 	return isSolved;
 }
+
+ApproachTypeC::ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving) :
+	Approach(taskType, successProbability, isReused, timeSolving), tasks()
+{
+}
+
+ApproachTypeC::~ApproachTypeC()
+{
+}
+
+bool ApproachTypeC::solve(const Task& task)
+{
+	int id = task.getId();
+	auto search = tasks.find(id);
+
+	if (search != tasks.end()) {		
+		double defaultProbabilityValue = successProbability;
+		int defaultTimeSolvingValue = timeSolving;
+		
+		int factor = search->second;
+		changeSuccessProbability(successProbability - factor * probabilityDecreaseValue);
+		changeTimeSolving(timeSolving + factor * timeSolvingIncreaseValue);
+		
+		bool isSolved = Approach::solve(task);
+
+		changeSuccessProbability(defaultProbabilityValue);
+		changeTimeSolving(defaultTimeSolvingValue);
+
+		search->second++;
+		return isSolved;
+	}
+	else {
+		tasks.insert({ id, 1 });
+		return Approach::solve(task);
+	}
+}

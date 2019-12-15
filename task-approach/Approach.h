@@ -2,8 +2,11 @@
 
 #include "Task.h"
 #include <string>
+#include <map>
+#include <memory>
 
 using std::string;
+using std::map;
 
 class Approach
 {
@@ -47,6 +50,22 @@ private:
 public:
 	ApproachTypeB(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeB();
+
+	bool virtual solve(const Task& task);
+};
+
+/* The time needed to solve the task increases and success probability decreases
+*  if this task solves again
+*/
+class ApproachTypeC : public Approach {
+private:
+	const double probabilityDecreaseValue = 0.05;
+	const int timeSolvingIncreaseValue = 2;
+	map<int, int> tasks; // the task ID and the number of attempts to solve
+
+public:
+	ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving);
+	virtual ~ApproachTypeC();
 
 	bool virtual solve(const Task& task);
 };
