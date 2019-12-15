@@ -132,7 +132,7 @@ double ApproachTypeC::getSuccessProbability(const Task& task)
 	auto search = tasks.find(id);
 
 	if (search != tasks.end()) {
-		int factor = search->second; // the number of attempts to solve
+		unsigned factor = search->second; // the number of attempts to solve
 		double result = successProbability - factor * probabilityDecreaseValue;
 		return result < 0.0 ? 0.0 : result;
 	}
