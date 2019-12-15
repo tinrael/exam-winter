@@ -2,6 +2,29 @@
 #include <stdexcept>
 #include <random>
 
+void Approach::changeSuccessProbability(double newValue)
+{
+	if (newValue <= 0.0) {
+		successProbability = 0.0;
+	}
+	else if (newValue >= 1.0) {
+		successProbability = 1.0;
+	}
+	else {
+		successProbability = newValue;
+	}
+}
+
+void Approach::changeTimeSolving(int newValue)
+{
+	if (newValue <= 0) {
+		timeSolving = 0;
+	}
+	else {
+		timeSolving = newValue;
+	}
+}
+
 Approach::Approach(string taskType, double successProbability, bool isReused, int timeSolving) :
 	taskType(taskType), isReused(isReused)
 {
