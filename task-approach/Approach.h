@@ -13,7 +13,7 @@ class Approach
 protected:
 	string taskType;
 	double successProbability;
-	bool isReused;
+	
 	int timeSolving; // the time needed to solve the task
 
 	// Sets the new value of success probability with upper and lower limits
@@ -22,6 +22,8 @@ protected:
 	void changeTimeSolving(int newValue);
 
 public:
+	bool isReused;
+	
 	Approach(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~Approach() = 0;
 
