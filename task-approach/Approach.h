@@ -25,6 +25,8 @@ public:
 	bool virtual solve(const Task &task);
 
 	string getTaskType();
+	double getSuccessProbability();
+	int getTimeSolving();
 };
 
 // fixed time and success probability

@@ -68,6 +68,16 @@ string Approach::getTaskType()
 	return taskType;
 }
 
+double Approach::getSuccessProbability()
+{
+	return successProbability;
+}
+
+int Approach::getTimeSolving()
+{
+	return timeSolving;
+}
+
 ApproachTypeA::ApproachTypeA(string taskType, double successProbability, bool isReused, int timeSolving) :
 	Approach(taskType, successProbability, isReused, timeSolving)
 {
