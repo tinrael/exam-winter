@@ -3,13 +3,20 @@
 #include <random>
 
 Approach::Approach(string taskType, double successProbability, bool isReused, int timeSolving) :
-	taskType(taskType), isReused(isReused), timeSolving(timeSolving)
+	taskType(taskType), isReused(isReused)
 {
 	if (successProbability >= 0.0 && successProbability <= 1.0) {
 		this->successProbability = successProbability;
 	}
 	else {
 		throw std::invalid_argument("The value of success probability is invalid!");
+	}
+
+	if (timeSolving >= 0) {
+		this->timeSolving = timeSolving;
+	}
+	else {
+		throw std::invalid_argument("The value of time-solving is invalid!");
 	}
 }
 
