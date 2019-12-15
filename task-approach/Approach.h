@@ -27,7 +27,13 @@ public:
 	Approach(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~Approach() = 0;
 
-	bool virtual solve(const Task &task);
+	virtual bool solve(const Task &task);
+	
+	/* Checks whether the task is usable to the approach.
+	The task is usable if the types are equal and
+	the success probability != 0.
+	*/
+	virtual bool isUsable(const Task& task);
 
 	string getTaskType();
 	virtual double getSuccessProbability(const Task& task);
@@ -61,10 +67,10 @@ public:
 */
 class ApproachTypeC : public Approach {
 private:
-	const double probabilityDecreaseValue = 0.05;
+	const double probabilityDecreaseValue = 0.2;
 	const int timeSolvingIncreaseValue = 2;
 	map<int, int> tasks; // the task ID and the number of attempts to solve
-
+	
 public:
 	ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeC();

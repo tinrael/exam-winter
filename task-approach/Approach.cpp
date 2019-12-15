@@ -63,6 +63,14 @@ bool Approach::solve(const Task& task)
 	return false;
 }
 
+bool Approach::isUsable(const Task& task)
+{
+	if (getSuccessProbability(task) != 0.0 && (task.getType() == taskType)) {
+		return true;
+	}
+	return false;
+}
+
 string Approach::getTaskType()
 {
 	return taskType;
