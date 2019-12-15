@@ -73,7 +73,7 @@ double Approach::getSuccessProbability()
 	return successProbability;
 }
 
-int Approach::getTimeSolving()
+int Approach::getTimeSolving(const Task& task)
 {
 	return timeSolving;
 }
@@ -115,6 +115,20 @@ ApproachTypeC::ApproachTypeC(string taskType, double successProbability, bool is
 
 ApproachTypeC::~ApproachTypeC()
 {
+}
+
+int ApproachTypeC::getTimeSolving(const Task& task)
+{
+	int id = task.getId();
+	auto search = tasks.find(id);
+
+	if (search != tasks.end()) {
+		int factor = search->second; // the number of attempts to solve
+		return successProbability - factor * probabilityDecreaseValue;
+	}
+	else {
+		return successProbability;
+	}
 }
 
 bool ApproachTypeC::solve(const Task& task)

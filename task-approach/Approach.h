@@ -31,7 +31,7 @@ public:
 
 	string getTaskType();
 	double getSuccessProbability();
-	int getTimeSolving();
+	virtual int getTimeSolving(const Task& task);
 };
 
 // fixed time and success probability
@@ -69,5 +69,6 @@ public:
 	ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeC();
 
+	int getTimeSolving(const Task& task) override;
 	bool virtual solve(const Task& task);
 };
