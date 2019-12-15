@@ -30,7 +30,7 @@ public:
 	bool virtual solve(const Task &task);
 
 	string getTaskType();
-	double getSuccessProbability();
+	virtual double getSuccessProbability(const Task& task);
 	virtual int getTimeSolving(const Task& task);
 };
 
