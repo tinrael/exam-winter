@@ -117,6 +117,7 @@ ApproachTypeC::~ApproachTypeC()
 {
 }
 
+// TODO: make the code better
 double ApproachTypeC::getSuccessProbability(const Task& task)
 {
 	int id = task.getId();
@@ -131,6 +132,7 @@ double ApproachTypeC::getSuccessProbability(const Task& task)
 	}
 }
 
+// TODO: make the code better
 int ApproachTypeC::getTimeSolving(const Task& task)
 {
 	int id = task.getId();
@@ -145,6 +147,7 @@ int ApproachTypeC::getTimeSolving(const Task& task)
 	}
 }
 
+// TODO: make the code better
 bool ApproachTypeC::solve(const Task& task)
 {
 	int id = task.getId();

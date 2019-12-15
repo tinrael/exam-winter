@@ -69,6 +69,7 @@ public:
 	ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeC();
 
+	double getSuccessProbability(const Task& task) override;
 	int getTimeSolving(const Task& task) override;
 	bool virtual solve(const Task& task);
 };
