@@ -133,7 +133,8 @@ double ApproachTypeC::getSuccessProbability(const Task& task)
 
 	if (search != tasks.end()) {
 		int factor = search->second; // the number of attempts to solve
-		return successProbability - factor * probabilityDecreaseValue;
+		double result = successProbability - factor * probabilityDecreaseValue;
+		return result < 0.0 ? 0.0 : result;
 	}
 	else {
 		return successProbability;
@@ -147,8 +148,8 @@ int ApproachTypeC::getTimeSolving(const Task& task)
 	auto search = tasks.find(id);
 
 	if (search != tasks.end()) {
-		int factor = search->second; // the number of attempts to solve
-		return timeSolving - timeSolving + factor * timeSolvingIncreaseValue;
+		unsigned factor = search->second; // the number of attempts to solve
+		return timeSolving + factor * timeSolvingIncreaseValue;
 	}
 	else {
 		return timeSolving;
@@ -165,7 +166,7 @@ bool ApproachTypeC::solve(const Task& task)
 		double defaultProbabilityValue = successProbability;
 		int defaultTimeSolvingValue = timeSolving;
 		
-		int factor = search->second;
+		unsigned factor = search->second;
 		changeSuccessProbability(successProbability - factor * probabilityDecreaseValue);
 		changeTimeSolving(timeSolving + factor * timeSolvingIncreaseValue);
 		

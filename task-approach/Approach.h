@@ -69,7 +69,7 @@ class ApproachTypeC : public Approach {
 private:
 	const double probabilityDecreaseValue = 0.2;
 	const int timeSolvingIncreaseValue = 2;
-	map<int, int> tasks; // the task ID and the number of attempts to solve
+	map<int, unsigned> tasks; // the task ID and the number of attempts to solve
 	
 public:
 	ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving);
