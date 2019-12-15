@@ -33,3 +33,18 @@ public:
 	ApproachTypeA(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeA();
 };
+
+/* The time needed to solve the task decreases and success probability increases
+*  if there is an attempt to solve the task.
+*/
+class ApproachTypeB : public Approach {
+private:
+	const double probabilityIncreaseValue = 0.1;
+	const int timeSolvingDecreaseValue = 1;
+
+public:
+	ApproachTypeB(string taskType, double successProbability, bool isReused, int timeSolving);
+	virtual ~ApproachTypeB();
+
+	bool virtual solve(const Task& task);
+};

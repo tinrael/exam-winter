@@ -76,3 +76,24 @@ ApproachTypeA::ApproachTypeA(string taskType, double successProbability, bool is
 ApproachTypeA::~ApproachTypeA()
 {
 }
+
+ApproachTypeB::ApproachTypeB(string taskType, double successProbability, bool isReused, int timeSolving) :
+	Approach(taskType, successProbability, isReused, timeSolving)
+{
+}
+
+ApproachTypeB::~ApproachTypeB()
+{
+}
+
+bool ApproachTypeB::solve(const Task& task)
+{
+	bool isSolved = Approach::solve(task);
+	
+	if (task.getType() == taskType) {
+		changeSuccessProbability(successProbability + probabilityIncreaseValue);
+		changeTimeSolving(timeSolving - timeSolvingDecreaseValue);
+	}
+	
+	return isSolved;
+}
