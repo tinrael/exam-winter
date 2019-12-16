@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->tblResults->setColumnWidth(0, 175);
-    ui->tblResults->setColumnWidth(1, 175);
+    ui->tblResults->setColumnWidth(0, 180);
+    ui->tblResults->setColumnWidth(1, 180);
     ui->tblResults->setHorizontalHeaderLabels(QStringList{
                                                   "Task",
                                                   "Approach",
@@ -26,8 +26,10 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(ui->lwTasks, &QListWidget::currentRowChanged, this, &MainWindow::setSolveButtonEnabled);
     QObject::connect(ui->lwTasks, &QListWidget::currentRowChanged, this, &MainWindow::setTaskInfo);
     QObject::connect(ui->lwApproaches, &QListWidget::currentRowChanged, this, &MainWindow::setSolveButtonEnabled);
+    QObject::connect(ui->lwApproaches, &QListWidget::currentRowChanged, this, &MainWindow::setApproachInfo);
 
     ui->gbTaskInfo->hide();
+    ui->gbApproachInfo->hide();
 }
 
 MainWindow::~MainWindow()
@@ -109,6 +111,17 @@ void MainWindow::setTaskInfo(int currentRow)
     ui->gbTaskInfo->show();
     ui->leTaskType->setText(QString::fromStdString(tasks[currentRow]->getType()));
     ui->leTaskSize->setText(QString::number(tasks[currentRow]->getSize()));
+}
+
+void MainWindow::setApproachInfo(int currentRow)
+{
+    if (currentRow == -1) {
+        ui->gbApproachInfo->hide();
+        return;
+    }
+    ui->gbApproachInfo->show();
+    ui->leApproachType->setText(QString::fromStdString(approaches[currentRow]->getTaskType()));
+    ui->teApproachTypeInfo->setText(QString::fromStdString(approaches[currentRow]->getTypeInfo()));
 }
 
 void MainWindow::setSolveButtonEnabled()

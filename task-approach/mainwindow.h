@@ -31,6 +31,7 @@ private:
 
 private slots:
     void setTaskInfo(int currentRow);
+    void setApproachInfo(int currentRow);
     void setSolveButtonEnabled();
     void on_pbSolve_clicked();
 };

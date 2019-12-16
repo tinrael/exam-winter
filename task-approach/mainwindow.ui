@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>818</width>
+    <height>711</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,8 +18,8 @@
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>320</y>
-      <width>721</width>
+      <y>430</y>
+      <width>751</width>
       <height>201</height>
      </rect>
     </property>
@@ -44,8 +44,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>250</y>
+      <x>370</x>
+      <y>370</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -68,9 +68,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>500</x>
+      <x>480</x>
       <y>20</y>
-      <width>251</width>
+      <width>311</width>
       <height>121</height>
      </rect>
     </property>
@@ -83,16 +83,19 @@
     <property name="title">
      <string>Task Info</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>30</x>
        <y>40</y>
-       <width>193</width>
+       <width>251</width>
        <height>63</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="fmlTaskSize">
+      <property name="horizontalSpacing">
+       <number>40</number>
+      </property>
       <item row="0" column="1">
        <widget class="QLineEdit" name="leTaskType">
         <property name="font">
@@ -148,13 +151,13 @@
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>260</x>
       <y>20</y>
       <width>191</width>
-      <height>271</height>
+      <height>331</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="vlApproaches">
@@ -192,13 +195,13 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>40</x>
       <y>20</y>
       <width>191</width>
-      <height>271</height>
+      <height>331</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="vlTasks">
@@ -236,13 +239,84 @@
      </item>
     </layout>
    </widget>
+   <widget class="QGroupBox" name="gbApproachInfo">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>150</y>
+      <width>311</width>
+      <height>201</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Calibri</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="title">
+     <string>Approach Info</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>41</y>
+       <width>258</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QFormLayout" name="frmlytApproach">
+        <item row="0" column="0">
+         <widget class="QLabel" name="lblApproach">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Approach</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="leApproachType">
+          <property name="font">
+           <font>
+            <family>Calibri</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QTextEdit" name="teApproachTypeInfo">
+        <property name="cursor" stdset="0">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>818</width>
      <height>26</height>
     </rect>
    </property>
