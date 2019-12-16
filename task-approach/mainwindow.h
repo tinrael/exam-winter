@@ -26,8 +26,11 @@ private:
 
     void addTasks();
     void addApproaches();
+    void calculate();
+    void addResultToTable(Task &task, Approach &approach, bool isSolved);
 
 private slots:
-    void enableSolveButton();
+    void setSolveButtonEnabled();
+    void on_pbSolve_clicked();
 };
 #endif // MAINWINDOW_H

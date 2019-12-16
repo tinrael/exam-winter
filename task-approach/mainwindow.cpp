@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QString>
+#include <QDateTime>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -8,11 +10,21 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->tblResults->setColumnWidth(0, 175);
+    ui->tblResults->setColumnWidth(1, 175);
+    ui->tblResults->setHorizontalHeaderLabels(QStringList{
+                                                  "Task",
+                                                  "Approach",
+                                                  "Time",
+                                                  "Probability",
+                                                  "Result"
+                                                  });
+
     addTasks();
     addApproaches();
 
-    QObject::connect(ui->lwTasks, &QListWidget::currentRowChanged, this, &MainWindow::enableSolveButton);
-    QObject::connect(ui->lwApproaches, &QListWidget::currentRowChanged, this, &MainWindow::enableSolveButton);
+    QObject::connect(ui->lwTasks, &QListWidget::currentRowChanged, this, &MainWindow::setSolveButtonEnabled);
+    QObject::connect(ui->lwApproaches, &QListWidget::currentRowChanged, this, &MainWindow::setSolveButtonEnabled);
 }
 
 MainWindow::~MainWindow()
@@ -49,7 +61,43 @@ void MainWindow::addApproaches()
     }
 }
 
-void MainWindow::enableSolveButton()
+void MainWindow::calculate()
+{
+    std::shared_ptr<Task> task = tasks[ui->lwTasks->currentRow()];
+    std::shared_ptr<Approach> approach = approaches[ui->lwApproaches->currentRow()];
+
+    bool isSolved = approach->solve(*task);
+    addResultToTable(*task, *approach, isSolved);
+}
+
+void MainWindow::addResultToTable(Task &task, Approach &approach, bool isSolved)
+{
+    QString currentDateTime = QDateTime::currentDateTime().toString();
+    QString taskType = QString::fromStdString(task.getType());
+    QString approachType = QString::fromStdString(approach.getTaskType());
+    QString successProbability = QString::number(approach.getSuccessProbability(task));
+    QString timeSolving = QString::number(approach.getTimeSolving(task));
+
+    int rowCount = ui->tblResults->rowCount();
+    ui->tblResults->setRowCount(rowCount + 1);
+
+    QTableWidgetItem* itemTaskType = new QTableWidgetItem(taskType);
+    ui->tblResults->setItem(rowCount, 0, itemTaskType);
+
+    QTableWidgetItem* itemApproachType = new QTableWidgetItem(approachType);
+    ui->tblResults->setItem(rowCount, 1, itemApproachType);
+
+    QTableWidgetItem* itemTimeSolving = new QTableWidgetItem(timeSolving);
+    ui->tblResults->setItem(rowCount, 2, itemTimeSolving);
+
+    QTableWidgetItem* itemSuccessProbability = new QTableWidgetItem(successProbability);
+    ui->tblResults->setItem(rowCount, 3, itemSuccessProbability);
+
+    QTableWidgetItem* itemSolved = new QTableWidgetItem(QString::number(isSolved));
+    ui->tblResults->setItem(rowCount, 4, itemSolved);
+}
+
+void MainWindow::setSolveButtonEnabled()
 {
     if (ui->lwTasks->currentRow() != -1 && ui->lwApproaches->currentRow() != -1) {
         ui->pbSolve->setEnabled(true);
@@ -57,4 +105,9 @@ void MainWindow::enableSolveButton()
     else {
         ui->pbSolve->setEnabled(false);
     }
+}
+
+void MainWindow::on_pbSolve_clicked()
+{
+    calculate();
 }
