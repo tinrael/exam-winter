@@ -26,5 +26,8 @@ private:
 
     void addTasks();
     void addApproaches();
+
+private slots:
+    void enableSolveButton();
 };
 #endif // MAINWINDOW_H

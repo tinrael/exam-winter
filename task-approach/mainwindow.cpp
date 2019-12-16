@@ -7,8 +7,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     addTasks();
     addApproaches();
+
+    QObject::connect(ui->lwTasks, &QListWidget::currentRowChanged, this, &MainWindow::enableSolveButton);
+    QObject::connect(ui->lwApproaches, &QListWidget::currentRowChanged, this, &MainWindow::enableSolveButton);
 }
 
 MainWindow::~MainWindow()
@@ -45,3 +49,12 @@ void MainWindow::addApproaches()
     }
 }
 
+void MainWindow::enableSolveButton()
+{
+    if (ui->lwTasks->currentRow() != -1 && ui->lwApproaches->currentRow() != -1) {
+        ui->pbSolve->setEnabled(true);
+    }
+    else {
+        ui->pbSolve->setEnabled(false);
+    }
+}
