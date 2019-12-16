@@ -1,6 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "Task.h"
+#include "Approach.h"
+#include <vector>
+#include <memory>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -17,5 +21,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    std::vector<std::shared_ptr<Task>> tasks;
+    std::vector<std::shared_ptr<Approach>> approaches;
+
+    void addTasks();
+    void addApproaches();
 };
 #endif // MAINWINDOW_H
