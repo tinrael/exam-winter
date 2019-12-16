@@ -35,6 +35,7 @@ public:
 	*/
 	virtual bool isUsable(const Task& task);
 
+    virtual string getTypeInfo() = 0;
 	string getTaskType();
 	virtual double getSuccessProbability(const Task& task);
 	virtual int getTimeSolving(const Task& task);
@@ -45,6 +46,8 @@ class ApproachTypeA : public Approach {
 public:
 	ApproachTypeA(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeA();
+
+    string getTypeInfo() override;
 };
 
 /* The time needed to solve the task decreases and success probability increases
@@ -59,7 +62,8 @@ public:
 	ApproachTypeB(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeB();
 
-	bool virtual solve(const Task& task);
+    bool virtual solve(const Task& task) override;
+    string getTypeInfo() override;
 };
 
 /* The time needed to solve the task increases and success probability decreases
@@ -75,7 +79,8 @@ public:
 	ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving);
 	virtual ~ApproachTypeC();
 
+    string getTypeInfo() override;
 	double getSuccessProbability(const Task& task) override;
 	int getTimeSolving(const Task& task) override;
-	bool virtual solve(const Task& task);
+    bool virtual solve(const Task& task) override;
 };

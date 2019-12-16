@@ -95,6 +95,11 @@ ApproachTypeA::~ApproachTypeA()
 {
 }
 
+std::string ApproachTypeA::getTypeInfo()
+{
+    return "fixed time and success probability";
+}
+
 ApproachTypeB::ApproachTypeB(string taskType, double successProbability, bool isReused, int timeSolving) :
 	Approach(taskType, successProbability, isReused, timeSolving)
 {
@@ -113,7 +118,12 @@ bool ApproachTypeB::solve(const Task& task)
 		changeTimeSolving(timeSolving - timeSolvingDecreaseValue);
 	}
 	
-	return isSolved;
+    return isSolved;
+}
+
+std::string ApproachTypeB::getTypeInfo()
+{
+  return "The time needed to solve the task decreases and success probability increases if there is an attempt to solve the task.";
 }
 
 ApproachTypeC::ApproachTypeC(string taskType, double successProbability, bool isReused, int timeSolving) :
@@ -123,6 +133,11 @@ ApproachTypeC::ApproachTypeC(string taskType, double successProbability, bool is
 
 ApproachTypeC::~ApproachTypeC()
 {
+}
+
+std::string ApproachTypeC::getTypeInfo()
+{
+    return "The time needed to solve the task increases and success probability decreases if this task solves again";
 }
 
 // TODO: make the code better
