@@ -108,6 +108,7 @@ void MainWindow::setTaskInfo(int currentRow)
         ui->gbTaskInfo->hide();
         return;
     }
+    ui->tbNotification->hide();
     ui->gbTaskInfo->show();
     ui->leTaskType->setText(QString::fromStdString(tasks[currentRow]->getType()));
     ui->leTaskSize->setText(QString::number(tasks[currentRow]->getSize()));
@@ -119,6 +120,7 @@ void MainWindow::setApproachInfo(int currentRow)
         ui->gbApproachInfo->hide();
         return;
     }
+    ui->tbNotification->hide();
     ui->gbApproachInfo->show();
     ui->leApproachType->setText(QString::fromStdString(approaches[currentRow]->getTaskType()));
     ui->teApproachTypeInfo->setText(QString::fromStdString(approaches[currentRow]->getTypeInfo()));
