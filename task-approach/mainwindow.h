@@ -30,6 +30,7 @@ private:
     void addResultToTable(Task &task, Approach &approach, bool isSolved);
 
 private slots:
+    void setTaskInfo(int currentRow);
     void setSolveButtonEnabled();
     void on_pbSolve_clicked();
 };

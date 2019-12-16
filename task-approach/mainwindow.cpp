@@ -24,7 +24,10 @@ MainWindow::MainWindow(QWidget *parent)
     addApproaches();
 
     QObject::connect(ui->lwTasks, &QListWidget::currentRowChanged, this, &MainWindow::setSolveButtonEnabled);
+    QObject::connect(ui->lwTasks, &QListWidget::currentRowChanged, this, &MainWindow::setTaskInfo);
     QObject::connect(ui->lwApproaches, &QListWidget::currentRowChanged, this, &MainWindow::setSolveButtonEnabled);
+
+    ui->gbTaskInfo->hide();
 }
 
 MainWindow::~MainWindow()
@@ -95,6 +98,17 @@ void MainWindow::addResultToTable(Task &task, Approach &approach, bool isSolved)
 
     QTableWidgetItem* itemSolved = new QTableWidgetItem(QString::number(isSolved));
     ui->tblResults->setItem(rowCount, 4, itemSolved);
+}
+
+void MainWindow::setTaskInfo(int currentRow)
+{
+    if (currentRow == -1) {
+        ui->gbTaskInfo->hide();
+        return;
+    }
+    ui->gbTaskInfo->show();
+    ui->leTaskType->setText(QString::fromStdString(tasks[currentRow]->getType()));
+    ui->leTaskSize->setText(QString::number(tasks[currentRow]->getSize()));
 }
 
 void MainWindow::setSolveButtonEnabled()
