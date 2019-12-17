@@ -1,6 +1,5 @@
 #include "Approach.h"
 #include <stdexcept>
-#include <random>
 
 void Approach::changeSuccessProbability(double newValue)
 {
@@ -26,7 +25,7 @@ void Approach::changeTimeSolving(int newValue)
 }
 
 Approach::Approach(string taskType, double successProbability, bool isReused, int timeSolving) :
-	taskType(taskType), isReused(isReused)
+    gen(rd()), dis(0.0, 1.0), taskType(taskType), isReused(isReused)
 {
 	if (successProbability >= 0.0 && successProbability <= 1.0) {
 		this->successProbability = successProbability;
@@ -51,10 +50,6 @@ Approach::~Approach()
 bool Approach::solve(const Task& task)
 {
 	if (task.getType() == this->taskType) {
-		std::random_device rd;
-		std::mt19937 gen(rd());
-		std::uniform_real_distribution<> dis(0.0, 1.0);
-
 		// Each call to dis(gen) generates a new random double in [0, 1)
 		if (dis(gen) < successProbability) {
 			return true;

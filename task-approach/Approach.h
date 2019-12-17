@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <random>
 
 using std::string;
 using std::map;
@@ -11,7 +12,11 @@ using std::map;
 class Approach
 {
 protected:
-	string taskType;
+    std::random_device rd;
+    std::mt19937 gen;
+    std::uniform_real_distribution<> dis;
+
+    string taskType;
 	double successProbability;
 	
 	int timeSolving; // the time needed to solve the task
