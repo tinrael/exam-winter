@@ -26,8 +26,7 @@ private:
 
     void addTasks();
     void addApproaches();
-    void calculate();
-    void addResultToTable(Task &task, Approach &approach, bool isSolved);
+    void addResultToTable();
 
 private slots:
     void setTaskInfo(int currentRow);

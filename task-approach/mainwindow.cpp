@@ -52,7 +52,7 @@ void MainWindow::addTasks()
 
 void MainWindow::addApproaches()
 {
-    approaches.emplace_back(std::make_shared<ApproachTypeA>("square", 0.2, true, 15));
+    approaches.emplace_back(std::make_shared<ApproachTypeA>("square", 0.6, true, 15));
     approaches.emplace_back(std::make_shared<ApproachTypeA>("integral", 0.9, false, 20));
     approaches.emplace_back(std::make_shared<ApproachTypeA>("integral", 0.9, false, 20));
     approaches.emplace_back(std::make_shared<ApproachTypeB>("square", 0.01, false, 5));
@@ -66,22 +66,18 @@ void MainWindow::addApproaches()
     }
 }
 
-void MainWindow::calculate()
+
+// TODO: make the code better
+void MainWindow::addResultToTable()
 {
     std::shared_ptr<Task> task = tasks[ui->lwTasks->currentRow()];
     std::shared_ptr<Approach> approach = approaches[ui->lwApproaches->currentRow()];
 
-    bool isSolved = approach->solve(*task);
-    addResultToTable(*task, *approach, isSolved);
-}
-
-void MainWindow::addResultToTable(Task &task, Approach &approach, bool isSolved)
-{
     QString currentDateTime = QDateTime::currentDateTime().toString();
-    QString taskType = QString::fromStdString(task.getType());
-    QString approachType = QString::fromStdString(approach.getTaskType());
-    QString successProbability = QString::number(approach.getSuccessProbability(task));
-    QString timeSolving = QString::number(approach.getTimeSolving(task));
+    QString taskType = QString::fromStdString(task->getType());
+    QString approachType = QString::fromStdString(approach->getTaskType());
+    QString successProbability = QString::number(approach->getSuccessProbability(*task));
+    QString timeSolving = QString::number(approach->getTimeSolving(*task));
 
     int rowCount = ui->tblResults->rowCount();
     ui->tblResults->setRowCount(rowCount + 1);
@@ -98,6 +94,7 @@ void MainWindow::addResultToTable(Task &task, Approach &approach, bool isSolved)
     QTableWidgetItem* itemSuccessProbability = new QTableWidgetItem(successProbability);
     ui->tblResults->setItem(rowCount, 3, itemSuccessProbability);
 
+    bool isSolved = approach->solve(*task);
     QTableWidgetItem* itemSolved = new QTableWidgetItem(QString::number(isSolved));
     ui->tblResults->setItem(rowCount, 4, itemSolved);
 }
@@ -138,5 +135,5 @@ void MainWindow::setSolveButtonEnabled()
 
 void MainWindow::on_pbSolve_clicked()
 {
-    calculate();
+    addResultToTable();
 }
