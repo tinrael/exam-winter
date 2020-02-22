@@ -34,8 +34,8 @@ public:
 
 	virtual bool solve(const Task &task);
 	
-	/* Checks whether the task is usable to the approach.
-	The task is usable if the types are equal and
+    /* Checks whether the approach is usable to the task.
+    The approach is usable if approach and task types are equal and
 	the success probability != 0.
 	*/
 	virtual bool isUsable(const Task& task);
