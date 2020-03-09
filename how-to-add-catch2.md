@@ -40,20 +40,41 @@ Right-click on the test project node in **Solution Explorer** for a pop-up menu.
 	
 	**Hint**: Use realtive path here, not absolute.	
 
-### 4. Add catch.hpp file to the test project folder.
+### 4. Include directories of the project under test to the test project:
+
+To avoid having to type the full path in each include statement in source files of the test project, you can add the required folders in **test project** > **Properties** > **C/C++** > **General** > **Additional Include Directories**.
+
+**For example**, you can put here:
+
+../project-under-test
+
+**Hint**: Use realtive path here, not absolute.	
+
+So now instead of writing in the test project like so:
+
+	#include "../project-under-test/Task.h" 
+
+you can write in this way:
+
+	#include "Task.h"
+
+### 5. Add catch.hpp file to the test project folder.
 
 Get it from [here](https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp).
 
-### 5. Create a tests-main.cpp file in the test project and add the lines below:
+### 6. Create a tests-main.cpp file in the test project and add the lines below:
 
 	#define CATCH_CONFIG_MAIN
 	#include "catch.hpp"
 
-### 6. Write some tests.
+### 7. Write some tests.
 
 You can have as many source files with tests as you want, but remember that only one of them must have the **#define CATCH_CONFIG_MAIN** declaration.
 
 ## References:
 
-<https://docs.microsoft.com/en-us/visualstudio/test/writing-unit-tests-for-c-cpp?view=vs-2019>
 <https://stackoverflow.com/questions/59645381/best-practices-for-unit-testing-with-catch2-in-visual-studio>
+
+<https://docs.microsoft.com/en-us/visualstudio/test/writing-unit-tests-for-c-cpp?view=vs-2019>
+
+<https://docs.microsoft.com/en-us/visualstudio/test/how-to-use-microsoft-test-framework-for-cpp?view=vs-2019#object_files>
