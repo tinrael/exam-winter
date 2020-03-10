@@ -16,17 +16,20 @@ Right-click on the test project node in **Solution Explorer** for a pop-up menu.
 
 	Choose **Edit**, and add the names of the **.obj** files (**.obj** files of the project under test), which are used in tests. Don't use the full path names.
 
-	**For example**, if you to want to test the code declared in *Task.h* and *Approach.h*, put *Task.obj* and *Approach.obj* here.
+	**For example**, if you to want to test the code declared in *Task.h* and *Approach.h*, put here:
+	
+		Task.obj
+		Approach.obj
 
 	**Note**: When you reference more header files from the project under test, don't forget to update this setting.
 
-4. Select the **Configuration Properties** > **Linker** > **General page**, then select **Additional Library Directories**.
+4. Select the **Configuration Properties** > **Linker** > **General** page, then select **Additional Library Directories**.
 
 	Choose **Edit**, and add the directory path to **.obj** files of the project under test. The path is typically within the build folder of the project under test.
 
-	**For example**, you can put here:
+	**For example**, you can put here (*editor's comment*: I am not sure if this example is applicable in all cases):
 	
-	$(OutDir) // not sure if this example is applicable in all cases
+		$(OutDir)
 
 	**Hint**: Use macros here. See the list of macros with their meanings [here](https://docs.microsoft.com/en-us/cpp/build/reference/common-macros-for-build-commands-and-properties?view=vs-2019).
 
@@ -36,21 +39,21 @@ Right-click on the test project node in **Solution Explorer** for a pop-up menu.
 	
 	**For example**, you can put here:
 	
-	../project-under-test
+		../project-under-test
 	
-	**Hint**: Use realtive path here, not absolute.	
+	**Hint**: Use realtive path here, not absolute.
 
-### 4. Include directories of the project under test to the test project:
+### 4. Include additional directories of the project under test to the test project:
 
-To avoid having to type the full path in each include statement in source files of the test project, you can add the required folders in **test project** > **Properties** > **C/C++** > **General** > **Additional Include Directories**.
+To avoid having to type the full path in each include statement in files of the test project, you can add the required folders in **test project** > **Properties** > **C/C++** > **General** > **Additional Include Directories**.
 
 **For example**, you can put here:
 
-../project-under-test
+	../project-under-test
 
-**Hint**: Use realtive path here, not absolute.	
+**Hint**: Use realtive path here, not absolute.
 
-So now instead of writing in the test project like so:
+So instead of writing in the test project's files like so:
 
 	#include "../project-under-test/Task.h" 
 
