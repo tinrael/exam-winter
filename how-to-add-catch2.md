@@ -81,3 +81,5 @@ You can have as many source files with tests as you want, but remember that only
 <https://docs.microsoft.com/en-us/visualstudio/test/writing-unit-tests-for-c-cpp?view=vs-2019>
 
 <https://docs.microsoft.com/en-us/visualstudio/test/how-to-use-microsoft-test-framework-for-cpp?view=vs-2019#object_files>
+
+<https://github.com/catchorg/Catch2/blob/master/docs/tutorial.md#top>
