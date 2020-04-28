@@ -14,15 +14,15 @@ using std::vector;
 int solve(const Task &task, vector<std::shared_ptr<Approach>> approaches, int timeFrame) {
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(0, approaches.size() - 1);
-	int random;
+	std::uniform_int_distribution<std::size_t> dis(0, approaches.size() - 1);
+	std::size_t random;
 
 	string taskType = task.getType();
 	int spentTime = 0;
 	bool isSolved = false;
 
 	while (!isSolved && !approaches.empty() && spentTime <= timeFrame) {
-		random = dis(gen);	
+		random = dis(gen);
 		
 		cout << "--- \t---" << endl;
 		cout << "Random number: " << random << endl;
@@ -45,7 +45,7 @@ int solve(const Task &task, vector<std::shared_ptr<Approach>> approaches, int ti
 			approaches.erase(approaches.begin() + random);
 		}
 
-		dis = std::uniform_int_distribution<>(0, approaches.size() - 1);
+		dis = std::uniform_int_distribution<std::size_t>(0, approaches.size() - 1);
 		cout << "--- \t---" << endl;
 	}
 
