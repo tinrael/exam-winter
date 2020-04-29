@@ -21,5 +21,8 @@
     <ClCompile Include="tests-task.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tests-approach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

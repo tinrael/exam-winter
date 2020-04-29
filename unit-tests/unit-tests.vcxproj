@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="tests-approach.cpp" />
     <ClCompile Include="tests-main.cpp" />
     <ClCompile Include="tests-task.cpp" />
   </ItemGroup>
