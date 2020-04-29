@@ -2,7 +2,7 @@
 
 #include "Task.h"
 
-TEST_CASE("initialization", "[task]") {
+TEST_CASE("initialization and assignment", "[task]") {
 	Task task1("square", 50);
 	REQUIRE(task1.getId() == 0);
 	REQUIRE(task1.getType() == "square");
