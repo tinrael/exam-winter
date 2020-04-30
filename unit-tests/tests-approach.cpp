@@ -20,6 +20,20 @@ TEST_CASE("approaches can be usable and unusable to the task", "[approach]") {
 	REQUIRE_FALSE(approach3.isUsable(task2));
 }
 
+TEST_CASE("approaches of type B increases success probability on each attempt of task solving", "[approach]") {
+	Task task1("square", 20);
+	Task task2("square", 35);
+	Task task3("matrix addition", 35);
+	ApproachTypeB approach("square", 0.5, true, 10);
+	
+	REQUIRE(approach.getSuccessProbability(task1) == Approx(0.5));
+	approach.solve(task3);
+	REQUIRE(approach.getSuccessProbability(task1) == Approx(0.5));
+	approach.solve(task2);
+	REQUIRE(approach.getSuccessProbability(task1) > 0.5);
+	REQUIRE(approach.getSuccessProbability(task2) > 0.5);
+}
+
 TEST_CASE("approaches of type C decrease success probability if this certain task solves again", "[approach]") {
 	Task task1("square", 20);
 	Task task2("square", 35);
