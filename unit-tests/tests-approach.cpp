@@ -36,7 +36,7 @@ TEST_CASE("approaches of type B increases success probability on each attempt of
 
 TEST_CASE("approaches of type C decrease success probability if this certain task solves again", "[approach]") {
 	Task task1("square", 20);
-	Task task2("square", 35);
+	Task task2("square", 20);
 	ApproachTypeC approach("square", 0.5, true, 10);
 
 	REQUIRE(approach.getSuccessProbability(task1) == Approx(0.5));
